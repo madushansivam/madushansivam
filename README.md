@@ -15,7 +15,7 @@
 </td>
 <td valign="middle">
 
-<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=19&duration=2600&pause=1000&color=58A6FF&vCenter=true&multiline=false&repeat=true&width=500&lines=🚀+Building+pipelines+that+never+sleep;🐳+Containerize.+Automate.+Deploy.+Repeat.;☁️+Docker+%7C+GitHub+Actions+%7C+AWS+%7C+Azure;⚡+Every+push+triggers+a+story;🎮+Founder+%40+Nānmīn+Game+Studio+%7C+SL" alt="Typing SVG"/>
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=19&duration=2600&pause=1000&color=58A6FF&vCenter=true&multiline=false&repeat=true&width=500&lines=Building+pipelines+that+never+sleep;Containerize.+Automate.+Deploy.+Repeat.;Docker+%7C+GitHub+Actions+%7C+AWS+%7C+Azure;Every+push+triggers+a+story;Founder+%40+Nanmin+Game+Studio+%7C+SL" alt="Typing SVG"/>
 
 <br/><br/>
 
