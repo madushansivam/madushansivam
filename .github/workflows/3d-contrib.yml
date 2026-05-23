@@ -1,0 +1,44 @@
+name: 🌐 3D Contribution Graph
+
+on:
+  schedule:
+    - cron: "0 18 * * *"  # Daily at midnight Sri Lanka time (UTC+5:30)
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Generate 3D Contribution Graph
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: yoshi389111/github-profile-3d-contrib@0.7.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          USERNAME: ${{ github.repository_owner }}
+          SETTING_JSON: |
+            {
+              "githubUserName": "madushansivam",
+              "totalCommits": true,
+              "includeForkedRepo": false,
+              "backgroundColor": "#0d1117",
+              "type": "2",
+              "locations": [
+                {
+                  "fileName": "profile-3d-contrib/profile-night-rainbow.svg",
+                  "type": "3",
+                  "backgroundColor": "#0d1117",
+                  "foregroundColor": "#00d4ff",
+                  "guideColor": "#7ee8fa"
+                }
+              ]
+            }
+
+      - name: Commit output
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          git diff --staged --quiet || git commit -m "chore: update 3D contribution graph [skip ci]"
+          git push
