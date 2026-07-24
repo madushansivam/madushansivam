@@ -1,0 +1,45 @@
+<svg viewBox="0 0 1200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="55%" stop-color="#1a1006"/>
+      <stop offset="100%" stop-color="#0d1117"/>
+    </linearGradient>
+    <linearGradient id="amberText" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffa657"/>
+      <stop offset="100%" stop-color="#f0883e"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="200" fill="url(#bg)"/>
+
+  <!-- terminal chrome bar -->
+  <rect x="0" y="0" width="1200" height="34" fill="#161b22"/>
+  <circle cx="24" cy="17" r="6" fill="#f0883e"/>
+  <circle cx="46" cy="17" r="6" fill="#3fb950" opacity="0.55"/>
+  <circle cx="68" cy="17" r="6" fill="#58a6ff" opacity="0.55"/>
+  <text x="600" y="22" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="#8b949e">madushan@fedora:~$</text>
+
+  <!-- prompt line -->
+  <text x="50" y="90" font-family="JetBrains Mono, monospace" font-size="20" fill="#3fb950">$ whoami</text>
+
+  <!-- typed name, revealed by a shrinking cover rect (typewriter effect) -->
+  <g>
+    <text x="50" y="140" font-family="JetBrains Mono, monospace" font-weight="700" font-size="42" fill="url(#amberText)">Madushan Samayasivam</text>
+    <rect x="45" y="106" width="640" height="44" fill="#0d1117">
+      <animate attributeName="width" from="640" to="0" dur="1.8s" begin="0.6s" fill="freeze"/>
+    </rect>
+  </g>
+
+  <!-- blinking cursor at end of reveal -->
+  <rect x="680" y="112" width="12" height="34" fill="#ffa657" opacity="0">
+    <animate attributeName="opacity" from="0" to="1" dur="0.1s" begin="2.4s" fill="freeze"/>
+    <animate attributeName="opacity" values="1;0;1" dur="1s" begin="2.5s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- subtitle, fades in after the name finishes typing -->
+  <text x="50" y="175" font-family="JetBrains Mono, monospace" font-size="16" fill="#8b949e" opacity="0">
+    DevOps Engineer &#183; CI/CD &#183; Cloud &#183; Containers
+    <animate attributeName="opacity" from="0" to="1" dur="1s" begin="2.6s" fill="freeze"/>
+  </text>
+</svg>
