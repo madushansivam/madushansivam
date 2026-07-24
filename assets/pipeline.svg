@@ -1,57 +1,95 @@
-<svg viewBox="0 0 1000 160" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 1000 170" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <style>
       .node { font-family: 'JetBrains Mono', monospace; font-size: 13px; fill: #e6edf3; font-weight: 700; }
       .stage { font-family: 'JetBrains Mono', monospace; font-size: 11px; fill: #8b949e; }
     </style>
+    <filter id="nodeGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="packetGlow" x="-150%" y="-150%" width="400%" height="400%">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
   </defs>
 
-  <rect width="1000" height="160" fill="#0d1117"/>
+  <rect width="1000" height="170" fill="#0a0d12"/>
 
-  <!-- base connecting line -->
-  <line x1="90" y1="80" x2="910" y2="80" stroke="#30363d" stroke-width="3"/>
+  <path id="mainline" d="M 90 85 L 910 85" fill="none"/>
+  <line x1="90" y1="85" x2="910" y2="85" stroke="#30363d" stroke-width="3"/>
 
-  <!-- animated flowing dashes over the line -->
-  <line x1="90" y1="80" x2="910" y2="80" stroke="#f0883e" stroke-width="3" stroke-dasharray="12 18">
-    <animate attributeName="stroke-dashoffset" from="0" to="-90" dur="1.6s" repeatCount="indefinite"/>
-  </line>
+  <!-- traveling packets, staggered for a continuous stream -->
+  <circle r="5" fill="#ffcc8a" filter="url(#packetGlow)">
+    <animateMotion dur="4s" repeatCount="indefinite">
+      <mpath href="#mainline"/>
+    </animateMotion>
+  </circle>
+  <circle r="5" fill="#f0883e" filter="url(#packetGlow)">
+    <animateMotion dur="4s" repeatCount="indefinite" begin="1.33s">
+      <mpath href="#mainline"/>
+    </animateMotion>
+  </circle>
+  <circle r="5" fill="#ffa657" filter="url(#packetGlow)">
+    <animateMotion dur="4s" repeatCount="indefinite" begin="2.66s">
+      <mpath href="#mainline"/>
+    </animateMotion>
+  </circle>
 
   <!-- SOURCE -->
   <g>
-    <circle cx="90" cy="80" r="26" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
-    <text x="90" y="85" text-anchor="middle" class="node">SRC</text>
-    <text x="90" y="128" text-anchor="middle" class="stage">source</text>
+    <circle cx="90" cy="85" r="26" fill="#12151b" stroke="#f0883e" stroke-width="2"/>
+    <circle cx="90" cy="85" r="26" fill="none" stroke="#ffcc8a" stroke-width="3" opacity="0" filter="url(#nodeGlow)">
+      <animate attributeName="opacity" values="0;1;0" dur="4s" begin="0s" repeatCount="indefinite"/>
+      <animate attributeName="r" values="26;34;26" dur="4s" begin="0s" repeatCount="indefinite"/>
+    </circle>
+    <text x="90" y="90" text-anchor="middle" class="node">SRC</text>
+    <text x="90" y="133" text-anchor="middle" class="stage">source</text>
   </g>
 
   <!-- BUILD -->
   <g>
-    <circle cx="295" cy="80" r="26" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
-    <text x="295" y="85" text-anchor="middle" class="node">BLD</text>
-    <text x="295" y="128" text-anchor="middle" class="stage">build</text>
+    <circle cx="295" cy="85" r="26" fill="#12151b" stroke="#f0883e" stroke-width="2"/>
+    <circle cx="295" cy="85" r="26" fill="none" stroke="#ffcc8a" stroke-width="3" opacity="0" filter="url(#nodeGlow)">
+      <animate attributeName="opacity" values="0;1;0" dur="4s" begin="1s" repeatCount="indefinite"/>
+      <animate attributeName="r" values="26;34;26" dur="4s" begin="1s" repeatCount="indefinite"/>
+    </circle>
+    <text x="295" y="90" text-anchor="middle" class="node">BLD</text>
+    <text x="295" y="133" text-anchor="middle" class="stage">build</text>
   </g>
 
   <!-- TEST -->
   <g>
-    <circle cx="500" cy="80" r="26" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
-    <text x="500" y="85" text-anchor="middle" class="node">TST</text>
-    <text x="500" y="128" text-anchor="middle" class="stage">test</text>
+    <circle cx="500" cy="85" r="26" fill="#12151b" stroke="#f0883e" stroke-width="2"/>
+    <circle cx="500" cy="85" r="26" fill="none" stroke="#ffcc8a" stroke-width="3" opacity="0" filter="url(#nodeGlow)">
+      <animate attributeName="opacity" values="0;1;0" dur="4s" begin="2s" repeatCount="indefinite"/>
+      <animate attributeName="r" values="26;34;26" dur="4s" begin="2s" repeatCount="indefinite"/>
+    </circle>
+    <text x="500" y="90" text-anchor="middle" class="node">TST</text>
+    <text x="500" y="133" text-anchor="middle" class="stage">test</text>
   </g>
 
   <!-- DEPLOY -->
   <g>
-    <circle cx="705" cy="80" r="26" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
-    <text x="705" y="85" text-anchor="middle" class="node">DPL</text>
-    <text x="705" y="128" text-anchor="middle" class="stage">deploy</text>
+    <circle cx="705" cy="85" r="26" fill="#12151b" stroke="#f0883e" stroke-width="2"/>
+    <circle cx="705" cy="85" r="26" fill="none" stroke="#ffcc8a" stroke-width="3" opacity="0" filter="url(#nodeGlow)">
+      <animate attributeName="opacity" values="0;1;0" dur="4s" begin="3s" repeatCount="indefinite"/>
+      <animate attributeName="r" values="26;34;26" dur="4s" begin="3s" repeatCount="indefinite"/>
+    </circle>
+    <text x="705" y="90" text-anchor="middle" class="node">DPL</text>
+    <text x="705" y="133" text-anchor="middle" class="stage">deploy</text>
   </g>
 
-  <!-- LIVE (green, pulsing) -->
-  <g>
-    <circle cx="910" cy="80" r="26" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
-    <text x="910" y="85" text-anchor="middle" class="node">LIVE</text>
-    <text x="910" y="128" text-anchor="middle" class="stage">production</text>
+  <!-- LIVE (persistent green glow, distinct from the amber cycle) -->
+  <g filter="url(#nodeGlow)">
+    <circle cx="910" cy="85" r="26" fill="#12151b" stroke="#3fb950" stroke-width="2.5"/>
   </g>
-  <circle cx="910" cy="80" r="26" fill="none" stroke="#3fb950" stroke-width="2" opacity="0.6">
-    <animate attributeName="r" from="26" to="42" dur="1.6s" repeatCount="indefinite"/>
-    <animate attributeName="opacity" from="0.6" to="0" dur="1.6s" repeatCount="indefinite"/>
+  <text x="910" y="90" text-anchor="middle" class="node">LIVE</text>
+  <text x="910" y="133" text-anchor="middle" class="stage">production</text>
+  <circle cx="910" cy="85" r="26" fill="none" stroke="#3fb950" stroke-width="2" opacity="0.6">
+    <animate attributeName="r" from="26" to="44" dur="1.8s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" from="0.6" to="0" dur="1.8s" repeatCount="indefinite"/>
   </circle>
 </svg>
